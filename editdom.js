@@ -38,3 +38,23 @@ function LoadScript(url)
     script.src = url;
     head.appendChild(script);
 }
+
+function Observer(intailData) {
+    obersver = {
+        data: intailData,
+        Subscribe: function (lambda) {
+            this.subscribers.push(lambda)
+        },
+        subscribers: [],
+        Update: function(data) {
+            this.data = data
+            this.Publish()
+        },
+        Publish: function() {
+            //make async
+            this.subscribers.forEach((subscriber) => subscriber(this.data))
+        }
+    }
+
+    return obersver
+}

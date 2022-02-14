@@ -2,16 +2,13 @@ function LoadFileButtonModule(loadFromFile, post = []) {
     let module = CreateEle('input', { type: 'file',
          class: 'file-selector',
          accept: 'application/json',
-         onchange: () => WaitForFileReader(event, loadFromFile, post) } )
+         onchange: () => WaitForFileReader(event, loadFromFile) } )
     return module
 }
 
-async function WaitForFileReader(event, output, post = []) {
+async function WaitForFileReader(event, output) {
     let text = await readFile(event.target.files[0])
     output(text)
-    post.forEach((func) => {
-        func()
-    })
 }
 
 function readFile(file) {
