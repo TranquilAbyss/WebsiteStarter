@@ -25,7 +25,11 @@ function DataTableModule(name, observer, columns = []) {
         columns.forEach((column, c) => {
             let cell = module.GetCell(ColumnIndexToLetter(c) + row)
             let newCell = module.GetCell(ColumnIndexToLetter(c) + (row + 1))
-            cell.SetValue(object[column["name"]])
+            let dataValue = object[column["name"]]
+            if (typeof  dataValue == 'undefined') {
+                dataValue = ""
+            }
+            cell.SetValue(dataValue)
             if (!cell.readonly) {
                 cell.children[0].oninput = OnCellChange
             }
@@ -61,7 +65,11 @@ function DataTableModule(name, observer, columns = []) {
             columns.forEach((column, c) => {
                 let cell = this.GetCell(ColumnIndexToLetter(c) + row)
                 let newCell = this.GetCell(ColumnIndexToLetter(c) + (row + 1))
-                cell.SetValue(object[column["name"]])
+                let dataValue = object[column["name"]]
+                if (typeof dataValue == 'undefined') {
+                    dataValue = ""
+                }
+                cell.SetValue(dataValue)
                 if (!cell.readonly) {
                     cell.children[0].oninput = OnCellChange
                 }
@@ -99,7 +107,6 @@ function OnCellChange(event) {
             SetupDataCell(newCell, newData.length, column)
         })
     }
-    console.log(event);
     newData[cell.index][cell.column["name"]] = event.srcElement.value
     observer.Update(newData)
 }
