@@ -8,6 +8,7 @@ let demoData = Observer([{name: "bob", age: "10", intrest: "fishing"}, {name: "s
 let demoColumns = [{name:"name"},{name:"age"},{name:"intrest"}]
 
 function LoadScripts() {
+    LoadScript("https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js")
     LoadScript("module/table.js")
     LoadScript("module/savebutton.js")
     LoadScript("module/loadfilebutton.js")
@@ -22,6 +23,7 @@ window.onload = function() {
 }
 
 function SetupCore() {
+    document.title = title
     header = CreateEle('div', {id:"header", innerText:title})
     content = CreateEle('div', {id:"content"})
 
