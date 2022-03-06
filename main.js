@@ -13,6 +13,12 @@ function LoadScripts() {
     LoadScript("module/savebutton.js")
     LoadScript("module/loadfilebutton.js")
     LoadScript("module/datatable.js")
+
+    LoadScript("module/piano/key.js")
+    LoadScript("module/piano/whitekey.js")
+    LoadScript("module/piano/blackkey.js")
+    LoadScript("module/piano/octave.js")
+    LoadScript("module/piano/piano.js")
 }
 
 LoadScripts()
@@ -40,6 +46,8 @@ function SetupContent() {
     content.InsertEle(LoadFileButtonModule(LoadFromFileJson))
     demoData.Subscribe((data) => table.LoadData(data))
     content.InsertEle(SaveButtonModule("demo.json", GenerateSaveString))
+    content.InsertEle(CreateEle('p', {innerText:"Piano Module Demo"}))
+    content.InsertEle(pianoModule())
 }
 
 // Project specific Functions
