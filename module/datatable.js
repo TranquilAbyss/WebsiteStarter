@@ -3,7 +3,6 @@ function DataTableModule(name, observer, columns = []) {
     let module = TableModule(name, 2, columns.length)
     module.observer = observer
     module.columnObjects = columns
-
     //columns headers
     columns.forEach((column, c) => {
         let cell = module.GetCell(ColumnIndexToLetter(c) + 1)
@@ -41,6 +40,9 @@ function DataTableModule(name, observer, columns = []) {
     })
 
     module.LoadData = function(data) {
+        if (document.activeElement.id.includes(this.tableName)) {
+            return
+        }
         columns = this.columnObjects
         this.Build(2, columns.length)
 
@@ -80,7 +82,6 @@ function DataTableModule(name, observer, columns = []) {
             ++row
         })
     }
-
     return module
 }
 

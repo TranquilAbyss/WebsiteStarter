@@ -59,7 +59,7 @@ function TabelCellModule(cellID, styles={}, readonly=true) {
         module.style[key] = styles[key]
     })
     if (!readonly) {
-        module.InsertEle(CreateEle('input', {type:"text"}))
+        module.InsertEle(CreateEle('input', {id: cellID + "input", type:"text"}))
     }
 
     module.readonly = readonly
