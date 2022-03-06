@@ -9,5 +9,8 @@ Considerations:
   - Dependency hell, version conflicts between dependencies which becomes a waste of time to manage.
 - Modules provide the benefit dependencies, pre made stuff that can be built on top of, but are designed to be smaller packages which can be deleted easily if not being used.
 
-
 This library is a work in progress.
+- Missing shared CSS support, but modules can still have CSS
+
+Demo:
+https://tranquilabyss.github.io/WebsiteStarter/
