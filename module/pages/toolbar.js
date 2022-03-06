@@ -1,5 +1,5 @@
 function ToolbarModule() {
-    module = CreateEle("div")
+    let module = CreateEle("div")
     module.classList.add("toolbar")
     module.currentPage = null
     module.addPage = function(page) {
@@ -18,7 +18,7 @@ function ToolbarModule() {
 }
 
 function ToolbarButtonModule(page, toolbar) {
-    module = CreateEle('button', {innerText: page.name})
+    let module = CreateEle('button', {innerText: page.name})
     module.toolbar = toolbar
     module.page = page
     module.onclick = function() {

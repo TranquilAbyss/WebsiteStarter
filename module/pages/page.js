@@ -1,5 +1,5 @@
 function PageModule(name) {
-    module = CreateEle("div")
+    let module = CreateEle("div")
     module.classList.add("page")
     module.name = name
     module.hide = function() {
