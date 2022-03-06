@@ -19,6 +19,9 @@ function LoadScripts() {
     LoadScript("module/piano/blackkey.js")
     LoadScript("module/piano/octave.js")
     LoadScript("module/piano/piano.js")
+
+    LoadScript("module/pages/toolbar.js")
+    LoadScript("module/pages/page.js")
 }
 
 LoadScripts()
@@ -48,6 +51,27 @@ function SetupContent() {
     content.InsertEle(SaveButtonModule("demo.json", GenerateSaveString))
     content.InsertEle(CreateEle('p', {innerText:"Piano Module Demo"}))
     content.InsertEle(pianoModule())
+
+    content.InsertEle(CreateEle('p', {innerText:"Pages Module Demo"}))
+    toolbar = ToolbarModule()
+    content.InsertEle(toolbar)
+    let homePage = SetupHomePage()
+    let demoPage = SetupDemoPage()
+    toolbar.addPage(homePage)
+    toolbar.addPage(demoPage)
+    content.InsertEle(homePage)
+    content.InsertEle(demoPage)
+}
+
+function SetupHomePage() {
+    let module = PageModule("Home")
+    module.innerText = "Home"
+    return module
+}
+function SetupDemoPage() {
+    let module = PageModule("Demo")
+    module.innerText = "Demo"
+    return module
 }
 
 // Project specific Functions
